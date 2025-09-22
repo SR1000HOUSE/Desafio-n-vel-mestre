@@ -1,0 +1,77 @@
+#include <stdio.h>
+
+// Função recursiva para movimentar a Torre (5 casas para a Direita)
+void moverTorre(int casasRestantes) {
+    if (casasRestantes == 0) return;
+    printf("Direita\n");
+    moverTorre(casasRestantes - 1);
+}
+
+// Função recursiva para movimentar a Rainha (8 casas para a Esquerda)
+void moverRainha(int casasRestantes) {
+    if (casasRestantes == 0) return;
+    printf("Esquerda\n");
+    moverRainha(casasRestantes - 1);
+}
+
+// Função recursiva para movimentar o Bispo (5 casas na diagonal para Cima e Direita)
+void moverBispoRecursivo(int casasRestantes) {
+    if (casasRestantes == 0) return;
+    printf("Cima, Direita\n");
+    moverBispoRecursivo(casasRestantes - 1);
+}
+
+// Função com loops aninhados para simular o Bispo com controle vertical e horizontal
+void moverBispoComLoops(int linhas, int colunas) {
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            // Aqui estamos simulando o movimento diagonal como combinação de cima e direita
+            printf("Cima, Direita\n");
+        }
+    }
+}
+
+// Função com loops complexos para o Cavalo (2 casas para cima e 1 para a direita)
+void moverCavalo() {
+    int movimentosFeitos = 0;
+
+    printf("\nMovimento do Cavalo (2 casas para Cima e 1 para Direita):\n");
+
+    for (int vertical = 0; vertical < 3; vertical++) {
+        for (int horizontal = 0; horizontal < 2; horizontal++) {
+            if (vertical < 2) {
+                printf("Cima\n");
+                movimentosFeitos++;
+                continue;
+            }
+            if (horizontal == 1) {
+                printf("Direita\n");
+                movimentosFeitos++;
+                break;
+            }
+        }
+    }
+}
+
+int main() {
+    // Movimento da Torre
+    printf("Movimento da Torre (5 casas para Direita):\n");
+    moverTorre(5);
+
+    // Movimento do Bispo com recursividade
+    printf("\nMovimento do Bispo (5 casas na diagonal para Cima e Direita - recursivo):\n");
+    moverBispoRecursivo(5);
+
+    // Movimento do Bispo com loops aninhados
+    printf("\nMovimento do Bispo (usando loops aninhados):\n");
+    moverBispoComLoops(1, 5); // 1 linha, 5 colunas para simular 5 casas
+
+    // Movimento da Rainha
+    printf("\nMovimento da Rainha (8 casas para Esquerda):\n");
+    moverRainha(8);
+
+    // Movimento do Cavalo com loops complexos
+    moverCavalo();
+
+    return 0;
+}
